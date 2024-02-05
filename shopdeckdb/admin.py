@@ -1,0 +1,30 @@
+from django.contrib import admin
+from django import forms
+from .models import *
+
+# Enregistrement des modèles dans l'interface d'administration
+admin.site.register(Client3DS)
+admin.site.register(customTitleID)
+admin.site.register(region)
+admin.site.register(parentalControl)
+admin.site.register(descriptor)
+admin.site.register(Title)
+admin.site.register(titleMovie)
+admin.site.register(ownedTitle)
+admin.site.register(wishlistedTitle)
+admin.site.register(announcement)
+admin.site.register(motd)
+admin.site.register(category)
+admin.site.register(keyword)
+admin.site.register(feature)
+admin.site.register(publisher)
+admin.site.register(genre)
+admin.site.register(webSite)
+admin.site.register(language)
+admin.site.register(platform)
+admin.site.register(redeemableCard)
+admin.site.register(searchCategory)
+admin.site.register(movie)
+admin.site.register(User)
+admin.site.register(item)
+admin.site.register(ownedTicket)
