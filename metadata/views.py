@@ -422,7 +422,7 @@ def contents(request, region):
     total = all_titles.count()
     movies = movie.objects.filter(name__icontains=search_term).order_by('-date')
     total_movie = movies.count()
-    total = total+total_movie
+    ##total = total+total_movie
     titles = []
     i = 0
     for title in all_titles:
@@ -529,7 +529,7 @@ def titles(request, region):
         total = all_titles.count()
         if request.GET.get("release_date_after") == None:
             total_movie = movies.count()
-            total = total+total_movie
+            ##total = total+total_movie
     if request.GET.get("platform[]") != None or request.GET.get("genre[]") != None or request.GET.get("publisher[]") != None or request.GET.get("price_max")!=None or request.GET.get("price_min")!=None:
         #over complicated but at least works
         if request.GET.get("platform[]") == None:
