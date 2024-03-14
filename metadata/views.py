@@ -193,7 +193,7 @@ def directory(request, region, cid):
             "aoc_available": False, 
             "in_app_purchase": title.in_app_purchase, 
             "release_date_on_original": str(title.date), 
-            "name": title.name, 
+            "name": "• "+title.region.initial+" • "+"\n"+title.name, 
             "id": title.id, 
             "product_code": title.product_code, 
             "icon_url": title.icon_url, 
@@ -315,7 +315,7 @@ def title(request, region, tid):
             "title_size": title.size,
             "download_code_sales": False,
             "download_card_sales": {"available": False},
-            "name": title.name,
+            "name": "• "+title.region.initial+" • "+"\n"+title.name, 
             "thumbnails": {"thumbnail": thumbnails},
             "id": title.id,
             "platform": platform_data,
@@ -477,7 +477,7 @@ def contents(request, region):
             "aoc_available": False, 
             "in_app_purchase": title.in_app_purchase, 
             "release_date_on_original": str(title.date), 
-            "name": title.name, 
+            "name": "• "+title.region.initial+" • "+"\n"+title.name, 
             "id": title.id, 
             "product_code": title.product_code, 
             "icon_url": title.icon_url, 
@@ -639,7 +639,7 @@ def titles(request, region):
             "aoc_available": False, 
             "in_app_purchase": title.in_app_purchase, 
             "release_date_on_original": str(title.date), 
-            "name": title.name, 
+            "name": "• "+title.region.initial+" • "+"\n"+title.name, 
             "id": title.id, 
             "product_code": title.product_code, 
             "icon_url": title.icon_url, 
@@ -772,5 +772,5 @@ def rankings(request, region):
 def ranking(request, region, rid):
     return JsonResponse({
         "error": {
-        "code": "5654", "message": "Hello ! This function are not aivailable for the moment..."}}, 
+        "code": "5654", "message": "Hello ! This function are not available for the moment..."}}, 
         status=400)
