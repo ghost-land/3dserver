@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 REM Vérifier si le fichier cia-helper.py existe, sinon le télécharger
 if not exist cia-helper.py (
     echo Téléchargement de cia-helper.py...
-    curl -o cia-helper.py https://raw.githubusercontent.com/ghost-land/3dserver/main/cia-helper.py
+    curl -o cia-helper.py https://raw.githubusercontent.com/ghost-land/3dserver/main/CiaMassConvertor/cia-helper.py
 )
 
 REM Vérifier si le fichier cia-helper.py a été téléchargé avec succès
