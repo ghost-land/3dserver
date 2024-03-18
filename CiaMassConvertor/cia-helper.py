@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-# By Let's Shop team
+# By GhostLand Team (First version by Let's Shop Team)
 # Tool to parse cias easily
 # Heavily inspired by one of the examples
 # Created with help from ZeroSkill
+# Improved by GhostLand Team
 
 import os
 import shutil
@@ -17,7 +18,7 @@ if len(sys.argv) == 1:
 try:
     with open(sys.argv[1], 'rb') as cia_file:
         with CIAReader(cia_file) as cia:
-            print("Welcome to CIA Helper! This tool is designed to help you add a homebrew to Let's Shop.")
+            print("Welcome to CIA Helper! This tool is designed to help you add a content to 3dServer.")
             print("If the title needs to be downloaded with a redeemable card, please make the id like: 50000000000000")
             print('Title ID:', cia.tmd.title_id.upper())
             print('Title Version:', cia.tmd.title_version.__index__())
