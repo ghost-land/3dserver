@@ -1,8 +1,15 @@
-<div class="card bg-dark" style="width: 25rem; display: inline-block;">
-    <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
-    <div class="card-body">
+<div class="card bg-dark mb-3" style="max-width: 25rem;">
+  <div class="position-relative">
+      <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
+      <div class="badge-region position-absolute bottom-0 end-0 m-3"> <!-- Positioning bottom right -->
+          <div class="badge bg-success text-light p-2 rounded"> <!-- Using the "bg-success" color class for the badge -->
+              {{ title.region.initial }}
+          </div>
+      </div>
+  </div>
+  <div class="card-body">
       <h5 class="card-title">{{ title.name }}</h5>
       <p class="card-text">by {{ title.publisher.publisher_name }}</p>
       <a href="/title/{{ title.id }}" class="btn btn-primary">View more</a>
-    </div>
+  </div>
 </div>

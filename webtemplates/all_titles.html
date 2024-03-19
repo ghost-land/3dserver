@@ -6,7 +6,14 @@
         {% for title in titles %}
             <div class="col-md-4 mb-4">
                 <div class="card bg-dark">
-                    <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
+                    <div class="position-relative">
+                        <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
+                        <div class="badge-region position-absolute bottom-0 end-0 m-3">
+                            <div class="badge bg-success text-light p-2 rounded">
+                                {{ title.region.initial }}
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ title.name }}</h5>
                         <p class="card-text">by {{ title.publisher.publisher_name }}</p>
@@ -17,4 +24,10 @@
         {% endfor %}
     </div>
 </div>
+
+<style>
+.badge-region {
+    z-index: 1;
+}
+</style>
 {% endblock %}

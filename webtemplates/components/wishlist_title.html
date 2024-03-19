@@ -1,9 +1,20 @@
 <div class="card bg-dark" style="width: 15rem; display: inline-block;">
-    <img src="{{ title.title.banner_url }}" class="card-img-top" alt="Title banner">
-    <div class="card-body">
+  <div class="position-relative">
+      <img src="{{ title.title.banner_url }}" class="card-img-top" alt="Title banner">
+      <div class="position-absolute bottom-0 end-0 m-3">
+          <div class="badge bg-success text-light p-2 rounded">
+              {{ title.title.region.initial }}
+          </div>
+      </div>
+  </div>
+  <div class="card-body">
       <h5 class="card-title">{{ title.title.name }}</h5>
       <p class="card-text">by {{ title.title.publisher.publisher_name }}</p>
       <a href="/title/{{ title.title.id }}" class="btn btn-primary">View more</a>
-      {% if wishlistedpage == "yes" %}<a href="/wishlist/remove?id={{title.title.id}}&redirect=/wishlist" class="btn btn-danger"><i class="fa-solid fa-xl fa-remove"></i>Remove from wishlist</a>{% endif %}
-    </div>
+      {% if wishlistedpage == "yes" %}
+          <a href="/wishlist/remove?id={{title.title.id}}&redirect=/wishlist" class="btn btn-danger">
+              <i class="fa-solid fa-xl fa-remove"></i>Remove from wishlist
+          </a>
+      {% endif %}
+  </div>
 </div>
