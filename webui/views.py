@@ -252,6 +252,13 @@ def search(request):
 
         return render(request, "searchresult.html", {"title": "Search Results", "WEBUI_NAME": WEBUI_NAME, "user": request.user, "updates": updates, "results": searched})
 
+def random_title(request):
+    random_title = Title.objects.filter(public=True).order_by('?').first()
+    if random_title is None:
+        return HttpResponse("No titles available.")
+    else:
+        return HttpResponseRedirect('/title/' + str(random_title.id))
+
 def err404(request, exception):
     return render(request, "404.html")
 
