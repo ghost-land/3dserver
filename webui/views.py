@@ -18,8 +18,8 @@ def index(request):
         if title.title.version > title.version:
             titles.append(title)
     updates = len(titles)
-    recent = Title.objects.filter(public=True).order_by('-date')[0:6]
-    random = Title.objects.filter(public=True).order_by('?')[0:6]
+    recent = Title.objects.filter(public=True).order_by('-date')[0:10]
+    random = Title.objects.filter(public=True).order_by('?')[0:10]
     return render(request, "index.html", {"title": "Home", "WEBUI_NAME": WEBUI_NAME, "user": request.user, "updates": updates, "random": random, "recent": recent})
 
 def title(request, tid):
