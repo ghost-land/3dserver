@@ -2,10 +2,24 @@
 {% block main %}
 <h1>Search</h1>
 <p>Hi! Here you can search for some titles :)</p>
+<p>Please enter either the Title Name, TID, or Product Code to search for a title.</p>
+<ul>
+    <li><strong>Title Name:</strong> Enter the name of the title you're searching for.</li>
+    <li><strong>TID (Title ID):</strong> Enter the Title ID (TID) if you know it. TID is a unique identifier for each title.</li>
+    <li><strong>Product Code:</strong> Enter the product code if you know it. Product code is a unique identifier assigned to a product.</li>
+</ul>
 <form method="GET" action="/search">
     <div class="input-group mb-3">
-        <span class="input-group-text bg-dark text-white" id="basic-addon1">Title name</span>
-        <input type="text" class="form-control bg-dark text-white" name="query" placeholder="Title name..." aria-label="Title name..." aria-describedby="basic-addon1">
+        <span class="input-group-text bg-dark text-white" id="basic-addon1">Title Name</span>
+        <input type="text" class="form-control bg-dark text-white" name="title_name" placeholder="Title name..." aria-label="Title name..." aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text bg-dark text-white" id="basic-addon2">TID</span>
+        <input type="text" class="form-control bg-dark text-white" name="tid" placeholder="TID..." aria-label="TID..." aria-describedby="basic-addon2">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text bg-dark text-white" id="basic-addon3">Product Code</span>
+        <input type="text" class="form-control bg-dark text-white" name="product_code" placeholder="Product Code..." aria-label="Product Code..." aria-describedby="basic-addon3">
     </div>      
     <input type="submit" class="btn btn-success" value="Go!">
 </form>

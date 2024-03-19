@@ -198,13 +198,29 @@ def search(request):
         if title.title.version > title.version:
             titles.append(title)
     updates = len(titles)
-    if request.GET.get("query") == None:
-        return render(request, "search.html", {"title": "Search", "WEBUI_NAME":WEBUI_NAME, "user": request.user,"updates": updates})
-    if not request.GET.get("query"):
-        return render(request, "_error.html", {"title": "Error", "WEBUI_NAME":WEBUI_NAME, "user": request.user,"updates": updates, "message": "Nothing was put as the title name."})
-    else:
-        searched = Title.objects.filter(name__icontains=request.GET.get("query"), public=True).order_by('-date')
-        return render(request, "searchresult.html", {"title": "Results for "+request.GET.get("query"), "WEBUI_NAME": WEBUI_NAME, "user": request.user, "updates": updates, "results": searched, "query": request.GET.get("query")})
+    
+    if request.method == "GET":
+        title_name = request.GET.get("title_name")
+        tid = request.GET.get("tid")
+        product_code = request.GET.get("product_code")
+        
+        if not title_name and not tid and not product_code:
+            return render(request, "search.html", {"title": "Search", "WEBUI_NAME":WEBUI_NAME, "user": request.user,"updates": updates})
+        
+        if (title_name and tid) or (title_name and product_code) or (tid and product_code):
+            return render(request, "_error.html", {"title": "Error", "WEBUI_NAME":WEBUI_NAME, "user": request.user,"updates": updates, "message": "Please fill in only one search field."})
+        
+        if title_name:
+            # Search by title name
+            searched = Title.objects.filter(name__icontains=title_name, public=True).order_by('-date')
+        elif tid:
+            # Search by TID
+            searched = Title.objects.filter(tid__icontains=tid, public=True).order_by('-date')
+        elif product_code:
+            # Search by product code
+            searched = Title.objects.filter(product_code__icontains=product_code, public=True).order_by('-date')
+
+        return render(request, "searchresult.html", {"title": "Search Results", "WEBUI_NAME": WEBUI_NAME, "user": request.user, "updates": updates, "results": searched})
 
 def err404(request, exception):
     return render(request, "404.html")
