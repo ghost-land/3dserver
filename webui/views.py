@@ -22,6 +22,10 @@ def index(request):
     random = Title.objects.filter(public=True).order_by('?')[0:10]
     return render(request, "index.html", {"title": "Home", "WEBUI_NAME": WEBUI_NAME, "user": request.user, "updates": updates, "random": random, "recent": recent})
 
+def all_titles(request):
+    titles = Title.objects.filter(public=True)  # Retrieve all public titles
+    return render(request, "all_titles.html", {"titles": titles})
+
 def title(request, tid):
     owned = ownedTitle.objects.filter(owner=request.user.linked_ds)
     titles = []

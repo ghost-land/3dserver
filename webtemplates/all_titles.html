@@ -1,0 +1,11 @@
+{% extends "_layout.html" %}
+{% block main %}
+<div class="container">
+    <h1>All Titles</h1>
+    <ul>
+        {% for title in titles %}
+            <li>{{ title.name }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
