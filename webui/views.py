@@ -27,23 +27,41 @@ def all_titles(request):
     return render(request, "all_titles.html", {"titles": titles, "title": "All Titles", "WEBUI_NAME": WEBUI_NAME})
 
 def title(request, tid):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect("/login")  # Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
+
     owned = ownedTitle.objects.filter(owner=request.user.linked_ds)
     titles = []
     for title in owned:
         if title.title.version > title.version:
             titles.append(title)
     updates = len(titles)
+
     try:
         title = Title.objects.get(id=tid, public=True)
     except ObjectDoesNotExist:
         raise Http404()
+
     try:
         wishlisted = wishlistedTitle.objects.get(title=title, owner=request.user.linked_ds)
         wishlisted = True
     except ObjectDoesNotExist:
         wishlisted = False
+
     title.desc = title.desc.replace('\n', '<br>')
-    return render(request, "title.html", {"title": title.name, "WEBUI_NAME":WEBUI_NAME, "user": request.user, "app": title, "updates": updates, "wishlisted": wishlisted})
+
+    # Splitting the screenshot URLs by ' \ ' and removing empty strings
+    screenshots = [url.strip() for url in title.screenshot_merged_url.split('\\') if url.strip()]
+
+    return render(request, "title.html", {
+        "title": title.name,
+        "WEBUI_NAME": WEBUI_NAME,
+        "user": request.user,
+        "app": title,
+        "updates": updates,
+        "wishlisted": wishlisted,
+        "screenshots": screenshots
+    })
 
 def add_wishlist(request):
     id = request.GET.get("id")
