@@ -7,7 +7,17 @@
             <div class="card bg-dark">
                 <div class="card-body">
                     <h1 class="card-title text-center mb-4">All Titles</h1>
-                    <p class="card-text">This page displays all available titles. You can view details about each title by clicking on the "View more" button.</p>
+                    <form method="GET" action="{% url 'all_titles' %}">
+                        <label for="sort">Sort by:</label>
+                        <select name="sort" id="sort">
+                            <option value="" {% if not request.GET.sort %} selected {% endif %}>Choose...</option>
+                            <option value="name_asc" {% if request.GET.sort == "name_asc" %} selected {% endif %}>Name (A-Z)</option>
+                            <option value="name_desc" {% if request.GET.sort == "name_desc" %} selected {% endif %}>Name (Z-A)</option>
+                            <option value="date_asc" {% if request.GET.sort == "date_asc" %} selected {% endif %}>Release Date (Oldest First)</option>
+                            <option value="date_desc" {% if request.GET.sort == "date_desc" %} selected {% endif %}>Release Date (Newest First)</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Sort</button>
+                    </form>
                 </div>
             </div>
         </div>

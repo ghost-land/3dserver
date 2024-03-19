@@ -23,12 +23,24 @@ def index(request):
     return render(request, "index.html", {"title": "Home", "WEBUI_NAME": WEBUI_NAME, "user": request.user, "updates": updates, "random": random, "recent": recent})
 
 def all_titles(request):
-    titles = Title.objects.filter(public=True)  # Retrieve all public titles
+    sort_option = request.GET.get('sort')
+
+    if sort_option == 'name_asc':
+        titles = Title.objects.filter(public=True).order_by('name')
+    elif sort_option == 'name_desc':
+        titles = Title.objects.filter(public=True).order_by('-name')
+    elif sort_option == 'date_asc':
+        titles = Title.objects.filter(public=True).order_by('date')
+    elif sort_option == 'date_desc':
+        titles = Title.objects.filter(public=True).order_by('-date')
+    else:
+        titles = Title.objects.filter(public=True).order_by('-date')
+
     return render(request, "all_titles.html", {"titles": titles, "title": "All Titles", "WEBUI_NAME": WEBUI_NAME})
 
 def title(request, tid):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect("/login")  # Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
+        return HttpResponseRedirect("/login") # Redirect to login page if user is not logged in
 
     owned = ownedTitle.objects.filter(owner=request.user.linked_ds)
     titles = []
