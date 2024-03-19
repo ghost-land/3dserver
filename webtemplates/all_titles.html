@@ -2,10 +2,19 @@
 {% block main %}
 <div class="container">
     <h1>All Titles</h1>
-    <ul>
+    <div class="row">
         {% for title in titles %}
-            <li>{{ title.name }}</li>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark">
+                    <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ title.name }}</h5>
+                        <p class="card-text">by {{ title.publisher.publisher_name }}</p>
+                        <a href="/title/{{ title.id }}" class="btn btn-primary">View more</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}

@@ -24,7 +24,7 @@ def index(request):
 
 def all_titles(request):
     titles = Title.objects.filter(public=True)  # Retrieve all public titles
-    return render(request, "all_titles.html", {"titles": titles})
+    return render(request, "all_titles.html", {"titles": titles, "title": "All Titles", "WEBUI_NAME": WEBUI_NAME})
 
 def title(request, tid):
     owned = ownedTitle.objects.filter(owner=request.user.linked_ds)
