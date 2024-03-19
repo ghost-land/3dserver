@@ -1,11 +1,21 @@
 {% extends "_layout.html" %}
+
 {% block main %}
 <div class="container">
-    <h1>All Titles</h1>
     <div class="row">
+        <div class="col">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">All Titles</h1>
+                    <p class="card-text">This page displays all available titles. You can view details about each title by clicking on the "View more" button.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {% for title in titles %}
-            <div class="col-md-4 mb-4">
-                <div class="card bg-dark">
+            <div class="col mb-4">
+                <div class="card bg-dark h-100">
                     <div class="position-relative">
                         <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
                         <div class="badge-region position-absolute bottom-0 end-0 m-3">
@@ -24,10 +34,4 @@
         {% endfor %}
     </div>
 </div>
-
-<style>
-.badge-region {
-    z-index: 1;
-}
-</style>
 {% endblock %}
