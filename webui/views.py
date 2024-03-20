@@ -36,7 +36,10 @@ def all_titles(request):
     else:
         titles = Title.objects.filter(public=True).order_by('-date')
 
-    return render(request, "all_titles.html", {"titles": titles, "title": "All Titles", "WEBUI_NAME": WEBUI_NAME})
+    # Count the total number of titles
+    total_titles = titles.count()
+
+    return render(request, "all_titles.html", {"titles": titles, "total_titles": total_titles, "title": "All Titles", "WEBUI_NAME": WEBUI_NAME})
 
 def title(request, tid):
     if not request.user.is_authenticated:

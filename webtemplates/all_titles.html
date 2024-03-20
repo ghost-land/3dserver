@@ -2,27 +2,29 @@
 
 {% block main %}
 <div class="container">
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
             <div class="card bg-dark">
                 <div class="card-body">
-                    <h1 class="card-title text-center mb-4">All Titles</h1>
-                    <form method="GET" action="{% url 'all_titles' %}">
-                        <label for="sort">Sort by:</label>
-                        <select name="sort" id="sort">
-                            <option value="" {% if not request.GET.sort %} selected {% endif %}>Choose...</option>
-                            <option value="name_asc" {% if request.GET.sort == "name_asc" %} selected {% endif %}>Name (A-Z)</option>
-                            <option value="name_desc" {% if request.GET.sort == "name_desc" %} selected {% endif %}>Name (Z-A)</option>
-                            <option value="date_asc" {% if request.GET.sort == "date_asc" %} selected {% endif %}>Release Date (Oldest First)</option>
-                            <option value="date_desc" {% if request.GET.sort == "date_desc" %} selected {% endif %}>Release Date (Newest First)</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary">Sort</button>
+                    <h1 class="card-title text-center mb-4">All Titles ({{ total_titles }})</h1>
+                    <form method="GET" action="{% url 'all_titles' %}" class="d-flex justify-content-center">
+                        <div class="input-group">
+                            <label for="sort" class="input-group-text">Sort by:</label>
+                            <select name="sort" id="sort" class="form-select">
+                                <option value="" {% if not request.GET.sort %} selected {% endif %}>Choose...</option>
+                                <option value="name_asc" {% if request.GET.sort == "name_asc" %} selected {% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if request.GET.sort == "name_desc" %} selected {% endif %}>Name (Z-A)</option>
+                                <option value="date_asc" {% if request.GET.sort == "date_asc" %} selected {% endif %}>Release Date (Oldest First)</option>
+                                <option value="date_desc" {% if request.GET.sort == "date_desc" %} selected {% endif %}>Release Date (Newest First)</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Sort</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4">
         {% for title in titles %}
             <div class="col mb-4">
                 <div class="card bg-dark h-100">
