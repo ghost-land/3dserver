@@ -4,10 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card bg-dark">
+            <div class="card bg-dark text-white shadow-lg">
                 <div class="card-body">
-                    <h1 class="card-title text-center mb-4">All Titles ({{ total_titles }})</h1>
-                    <form method="GET" action="{% url 'all_titles' %}" class="d-flex justify-content-center">
+                    <h1 class="card-title text-center mb-4">All Titles</h1>
+                    <p class="text-center">There are currently {{ total_titles }} titles available.</p>
+                    <form method="GET" action="{% url 'all_titles' %}" class="d-flex justify-content-center mb-4">
                         <div class="input-group">
                             <label for="sort" class="input-group-text">Sort by:</label>
                             <select name="sort" id="sort" class="form-select">
@@ -27,7 +28,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4">
         {% for title in titles %}
             <div class="col mb-4">
-                <div class="card bg-dark h-100">
+                <div class="card bg-dark h-100 text-white shadow">
                     <div class="position-relative">
                         <img src="{{ title.banner_url }}" class="card-img-top" alt="Title banner">
                         <div class="badge-region position-absolute bottom-0 end-0 m-3">
