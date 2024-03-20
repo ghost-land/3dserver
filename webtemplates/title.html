@@ -1,51 +1,92 @@
 {% extends '_layout.html' %}
 {% block main %}
-<h1>{{app.name}}</h1>
-<br>
-<div class="d-flex">
-<img src="{{app.banner_url}}" alt="banner">
-<div class="ms-2">
-    {% if wishlisted %}
-    <a class="btn btn-danger" href="/wishlist/remove?id={{app.id}}&redirect=/title/{{app.id}}"><li class="fa-solid fa-remove"></li>Remove from wishlist</a>
-    {% else %}
-    <a class="btn btn-warning" href="/wishlist/add?id={{app.id}}"><li class="fa-solid fa-add"></li>Add to wishlist</a>
-    {% endif %}
-    <h2>Price: {{ app.price }} Credit</h2>
-    <h4><i>{% if app.is_not_available %}Not available{% else %}Available now{% endif %}</i></h4>
-</div>
-</div>
-<br>
-<br>
-<h2>Description</h2>
-{% autoescape off %}
-<p>{{ app.desc }}</p>
-{% endautoescape %}
-<h3>Details</h3>
-<div class="detail-box">
-    <p>Publisher: {{app.publisher.publisher_name}}</p>
-    <p class="ms-5">Genre: {{app.genre.name}}</p>
-</div>
-<br>
-<div class="detail-box">
-    <p>Platform: {{app.platform.name}}</p>
-    <p class="ms-5">Release date: {{app.date}}</p>
-</div>
-<br>
-<div class="detail-box">
-    <p>Title ID: {{app.tid}}</p>
-</div>
-<h3>Screenshots</h3>
-<div class="screenshot-container">
-    {% for screenshot in screenshots %}
-        <a href="{{ screenshot }}" class="screenshot-image" data-baguettebox="screenshots">
-            <img src="{{ screenshot }}" alt="Screenshot" class="lazyload">
+<div class="fade-in">
+    <h1>{{app.name}}</h1>
+    <br>
+    <div class="d-flex">
+        <img src="{{app.banner_url}}" alt="banner">
+        <div class="ms-2">
+            {% if wishlisted %}
+            <a class="btn btn-danger" href="/wishlist/remove?id={{app.id}}&redirect=/title/{{app.id}}"><li class="fa-solid fa-remove"></li>Remove from wishlist</a>
+            {% else %}
+            <a class="btn btn-warning" href="/wishlist/add?id={{app.id}}"><li class="fa-solid fa-add"></li>Add to wishlist</a>
+            {% endif %}
+            <h2>Price: {{ app.price }} Credit</h2>
+            <h4><i>{% if app.is_not_available %}Not available{% else %}Available now{% endif %}</i></h4>
+        </div>
+    </div>
+    <br>
+    <br>
+    <h2>Description</h2>
+    {% autoescape off %}
+    <p>{{ app.desc }}</p>
+    {% endautoescape %}
+    <h3>Details</h3>
+    <div class="detail-box">
+        <p>Publisher: {{app.publisher.publisher_name}}</p>
+        <p class="ms-5">Genre: {{app.genre.name}}</p>
+    </div>
+    <br>
+    <div class="detail-box">
+        <p>Platform: {{app.platform.name}}</p>
+        <p class="ms-5">Release date: {{app.date}}</p>
+    </div>
+    <br>
+    <div class="detail-box">
+        <p>Title ID: {{app.tid}}</p>
+    </div>
+    <h3>Screenshots</h3>
+    <div class="screenshot-container">
+        {% for screenshot in screenshots %}
+        <a href="{{ screenshot }}" class="screenshot-image" data-fancybox="gallery">
+            <img src="{{ screenshot }}" alt="Screenshot" class="lazyload screenshot-animation">
         </a>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.0/baguetteBox.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.0/baguetteBox.min.js"></script>
-<script src="http://afarkas.github.io/lazysizes/lazysizes.min.js" async=""></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script>
-    baguetteBox.run('.screenshot-container');
+    $(document).ready(function() {
+        $(".screenshot-image").fancybox({
+            loop: true,
+            buttons: [
+                "slideShow",
+                "fullScreen",
+                "thumbs",
+                "close"
+            ],
+        });
+    });
 </script>
+<style>
+    /* Add CSS animation for screenshots */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .screenshot-animation {
+        animation: fadeInUp 0.5s ease-in-out;
+    }
+
+    /* Add CSS animation for fade-in effect */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+</style>
 {% endblock %}
