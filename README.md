@@ -3,9 +3,9 @@
 ____________________________________________________
 
 
-This project is based on [shopdeck](github.com/Aftendo/shopdeck) by [Aftendo](github.com/Aftendo), **but is in no way related to it**.
+This project is based on [shopdeck](https://github.com/Aftendo/shopdeck) by [Aftendo](https://github.com/Aftendo), **but is in no way related to it**.
 
-**[Aftendo](github.com/Aftendo) _does not support this project_** in any way, and will not help you with it, please contact [Ghost Land Team](github.com/ghost-land/3dserver/issues) and not [Aftendo](github.com/Aftendo) for [3dserver](github.com/ghost-land/3dserver) !!!
+**[Aftendo](https://github.com/Aftendo) _does not support this project_** in any way, and will not help you with it, please contact [Ghost Land Team](https://github.com/ghost-land/3dserver/issues) and not [Aftendo](https://github.com/Aftendo) for [3dserver](https://github.com/ghost-land/3dserver) !!!
 
 
 ____________________________________________________
