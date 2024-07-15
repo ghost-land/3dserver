@@ -52,6 +52,63 @@
                 height: auto;
             }
         }
+
+        .card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #343a40; 
+            color: #fff; 
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); 
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger {
+            background-color: #dc3545; 
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #bb2d3b; 
+        }
+
+        .btn-warning {
+            background-color: #ffc107; 
+            color: #000;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2, h3 {
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -77,19 +134,11 @@
         <p>{{ app.desc }}</p>
         {% endautoescape %}
         <h3>Details</h3>
-        <div class="detail-box">
-            <p>Publisher: {{ app.publisher.publisher_name }}</p>
-            <p class="ms-5">Genre: {{ app.genre.name }}</p>
-        </div>
-        <br>
-        <div class="detail-box">
-            <p>Platform: {{ app.platform.name }}</p>
-            <p class="ms-5">Release date: {{ app.date }}</p>
-        </div>
-        <br>
-        <div class="detail-box">
-            <p>Title ID: {{ app.tid }}</p>
-        </div>
+        <p>Publisher: {{ app.publisher.publisher_name }}</p>
+        <p>Genre: {{ app.genre.name }}</p>
+        <p>Platform: {{ app.platform.name }}</p>
+        <p>Release date: {{ app.date }}</p>
+        <p>Title ID: {{ app.tid }}</p>
         <h3>Screenshots</h3>
         <div class="screenshot-container">
             {% for screenshot in screenshots %}

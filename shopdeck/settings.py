@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = ')z8gpk^=dh1p*sjtk94y137mj%_p378a6+js)eawymba)_6uga'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -151,6 +151,9 @@ METADATA_API_URL = "ninja.ctr.shop.nintendo.net"
 
 # TOS
 TOS_ESHOP = "ENGLISH\n \nWelcome to Ghost eShop a 3DS Service \nResurrection ! :D \n \nGhost eShop is only available \nfor Nintendo 3DS family systems.\n \nWe're adding content regularly, so don't hesitate to take a look at what's new!\n \nA Nintendo Network ID is required if you want to download and install content \nfree of charge.\n \nIn order to support us and improve our \nservices, we have opened a page to \ncollect donations. \nhttps://ko-fi.com/ghostland \n \nThank you in advance for your support. \n \nCredit : \n2024 - Ghost eShop team \n(based on the Aftendo code) \n \nFRANCAIS\n \nBienvenue sur Ghost eShop, une \nrésurrection d'un service 3DS ! :D \n \nGhost eShop est uniquement disponible pour les consoles de la famille Nintendo 3DS. \n \nNous ajoutons régulièrement du \ncontenu, n'hésitez pas à jeter un coup \nd'oeil aux dernières nouveautés !\n \nUn identifiant Nintendo Network \nest nécessaire pour télécharger et \ninstaller gratuitement du contenu. \n \nAfin de nous soutenir et d'améliorer nos services, nous avons ouvert une page \npour collecter des dons. \nhttps://ko-fi.com/ghostland \n \nMerci d'avance pour le soutient.\n \nCredit : \n2024 - Ghost eShop team \n(basé sur le code de Aftendo)"
+
+#Maintenance Message
+MAINTENANCE_MSG = "Maintenance message."
 
 # Enable if maintenance is necessary
 IN_MAINTENANCE = False
