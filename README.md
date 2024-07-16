@@ -11,3 +11,6 @@ This project is based on [shopdeck](https://github.com/Aftendo/shopdeck) by [Aft
 ____________________________________________________
 
 <h3>🚨 This Readme is under construction 🚨<h3>
+
+
+[![wakatime](https://wakatime.com/badge/github/ghost-land/3dserver.svg)](https://wakatime.com/badge/github/ghost-land/3dserver)
