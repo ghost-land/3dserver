@@ -13,4 +13,6 @@ ____________________________________________________
 <h3>🚨 This Readme is under construction 🚨<h3>
 
 
-[![wakatime](https://wakatime.com/badge/github/ghost-land/3dserver.svg)](https://wakatime.com/badge/github/ghost-land/3dserver)
+## Related Projects
+- [3dsdb](https://github.com/ghost-land/3dsdb)
+- [3DSDBAPI](https://github.com/ghost-land/3DSDBAPI)
